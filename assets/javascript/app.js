@@ -1,18 +1,15 @@
+var ingredients;
 
+$('#submit-btn').on('click', function() {
+    ingredients = $('#ingredient-input').val().trim();
+    console.log(ingredients);
+     $('#ingredient-container').prepend(`<p><button class='btn btn-success ingredient'>${ingredients}</button></p>`);
+     $('#ingredient-input').val('');
+})
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAjLOCnFetZBaMBqLoAxQOJiuve81ijJlU",
-    authDomain: "secondchancepantry-f65c5.firebaseapp.com",
-    databaseURL: "https://secondchancepantry-f65c5.firebaseio.com",
-    storageBucket: "secondchancepantry-f65c5.appspot.com",
-    messagingSenderId: "1083855170391"
-  };
-  firebase.initializeApp(config);
+$(document).on('click', '.ingredient', function() {
+    var selectedIngredient = $(this).text();
+    // console.log(selectedIngredient);
+    $('#selected-ingredients-container').append(`<p class='selectedIngredient'>${selectedIngredient}</p>`);
 
-
-
-
-
-console.log("js page is attached");
-
+});
