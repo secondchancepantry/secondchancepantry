@@ -24,6 +24,19 @@
   .border {
       border: 1px solid black;
   }
+  .selectedIngredient {
+      background-color: lightgreen;
+      width: 50%;
+  }
+  #search-btn {
+      margin-top: 20px;
+      margin-left: 300px;
+      margin-bottom: 10px;
+  }
+
+  .btn {
+    margin:1px;
+  }
 </style>
 </head>
 <body>
@@ -34,28 +47,42 @@
           <div class="row" id="nav-bar"> Navbar </div>
     </div>
 
-    <div class="container height" id="ingredient-container">
+    <div class="container height">
         <div class="row">
-           <div class="col-sm-4 height"> Recipe 
+           <div class="col-sm-4 height" id="ingredient-container"> Recipe 
                 <input class="form-control" type="text" id="ingredient-input" placeholder="Enter your ingredients">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
            </div>
-           <div class="col-sm-8 height"> Drag </div>
+           <div class="col-sm-8 height" id="selected-ingredients-container">
+                <button type="submit" class="btn btn-primary" id="search-btn">Search Recipes </button>
+           </div>
         </div>
     </div>
 
     <div class="container height" id="recipe-found"> Show Recipes here</div>
 
-        <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+    <!-- Link to my Javascript page.  -->
+    <script src="./assets/javascript/app.js" type="text/javascript"></script>
 
     <!-- JQuery Link -->
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 
     <!-- JQuery UI Link -->
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="crossorigin="anonymous"></script>
+        <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAjLOCnFetZBaMBqLoAxQOJiuve81ijJlU",
+        authDomain: "secondchancepantry-f65c5.firebaseapp.com",
+        databaseURL: "https://secondchancepantry-f65c5.firebaseio.com",
+        storageBucket: "secondchancepantry-f65c5.appspot.com",
+        messagingSenderId: "1083855170391"
+      };
+      firebase.initializeApp(config);
+    </script>
 
-    <!-- Link to my Javascript page.  -->
-    <script src="./assets/javascript/app.js" type="text/javascript"></script>
+
     </body>
 </html>
