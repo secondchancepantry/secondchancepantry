@@ -35,20 +35,54 @@ var getRecipe = function(){
         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
         data: {}, // Additional parameters here
         dataType: 'json',
-        success: function(data) { console.log((data)); },
+        success: function(data) { 
+
+            var results = data;
+            console.log(results);
+
+            for (var i = 0; i < results.length; i++) {
+            var recipe = results[i].id;
+            console.log(recipe);
+
+                $.ajax({
+                    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + recipe + '/information?includeNutrition=false', // The URL to the API. You can get this in the API page of the API you intend to consume
+                    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+                    data: {}, // Additional parameters here
+                    dataType: 'json',
+                    success: function(data) { console.log((data)); },
+                    error: function(err) { alert(err); },
+                    beforeSend: function(xhr) {
+                    xhr.setRequestHeader("X-Mashape-Authorization", "DrNwVlaI6BmshQBWAGcWVKEwd2Nop1lT1sHjsnhKbHXzD5wrkP"); // Enter here your Mashape key
+                    }
+                });
+
+            };
+            
+            // var Image = $("<img>");
+            // Image.attr("src", results[i].image);
+            // resultsDiv.prepend(Image);
+
+            // $("#recipe-found").prepend(resultsDiv);
+
+
+
+         },
         error: function(err) { alert(err); },
         beforeSend: function(xhr) {
         xhr.setRequestHeader("X-Mashape-Authorization", "DrNwVlaI6BmshQBWAGcWVKEwd2Nop1lT1sHjsnhKbHXzD5wrkP"); // Enter here your Mashape key
         }
     });
+        // var results = response.data;
 };
 
 
 $('#search-btn').on('click', function(){
 
     getRecipe();
+
 });
 
+;
 
 // var output = $.ajax({
 //     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=' + selectedIngredientList.join(",") + '&limitLicense=false&number=5&ranking=1', // The URL to the API. You can get this in the API page of the API you intend to consume
