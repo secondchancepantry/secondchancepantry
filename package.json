@@ -1,7 +1,0 @@
-{
-  "name": "application-name",
-  "version": "0.0.1",
-  "dependencies": {
-    "firebase": "^3.7.2"
-  }
-}
