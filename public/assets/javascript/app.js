@@ -2,6 +2,15 @@ var ingredients;
 var pantryList = [];
 var IngredientList = [];
 var selectedIngredientList = [];
+var user = {};
+var config = {
+    apiKey: "AIzaSyAjLOCnFetZBaMBqLoAxQOJiuve81ijJlU",
+    authDomain: "secondchancepantry-f65c5.firebaseapp.com",
+    databaseURL: "https://secondchancepantry-f65c5.firebaseio.com",
+    storageBucket: "secondchancepantry-f65c5.appspot.com",
+    messagingSenderId: "1083855170391"
+};
+firebase.initializeApp(config);
 var database = firebase.database();
 var userRef = firebase.database().ref('/users');
 
@@ -19,6 +28,33 @@ $('#submit-btn').on('click', function() {
 
 })
 
+
+var provider = new firebase.auth.GoogleAuthProvider();
+
+function googleSignin() {
+   firebase.auth()
+   
+   .signInWithPopup(provider).then(function(result) {
+	  var token = result.credential.accessToken;
+	  user = result.user;
+   }).catch(function(error) {
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+		
+	  //console.log(error.code)
+	  //console.log(error.message)
+   });
+}
+
+function googleSignout() {
+   firebase.auth().signOut()
+	
+   .then(function() {
+	  console.log('Signout Succesfull')
+   }, function(error) {
+	  console.log('Signout Failed')  
+   });
+}
 
 
 
