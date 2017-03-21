@@ -1,0 +1,19 @@
+{
+  "name": "gpt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michelledai2020/GPT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michelledai2020/GPT/issues"
+  },
+  "homepage": "https://github.com/michelledai2020/GPT#readme"
+}

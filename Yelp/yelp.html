@@ -1,0 +1,149 @@
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <title>Yelp OAuth Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Clicker+Script|Covered+By+Your+Grace|Dancing+Script|Homemade+Apple|Inconsolata|Reenie+Beanie|Sacramento|Space+Mono|Yellowtail" rel="stylesheet">
+
+    <script
+  src="https://code.jquery.com/jquery-3.2.0.js"
+  integrity="sha256-wPFJNIFlVY49B+CuAIrDr932XSb6Jk3J1M22M3E2ylQ="
+  crossorigin="anonymous"></script>
+
+    <!-- Loading Bootstrap -->
+    <link href="./css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="./css/flat-ui.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="./img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="./node_modules/semantic-ui/dist/semantic.min.css">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="./node_modules/semantic-ui/dist/semantic.min.js"></script>
+
+    </script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+      body {
+        background-image: url('./assets/img/bg8.jpg');
+      }
+      #header-container {
+        text-align: center;
+        padding-top: 20px;
+      }
+      h1 {
+        color:#34495E;
+        font-size: 60px;
+        font-family:'Homemade Apple', cursive;
+      }
+      #header-container {
+        height: 130px;
+        width: 100%;
+        background-color: rgba(238,238,238,0.8);
+      }
+      #search-container {
+          width:30%;
+          text-align: center;
+      }
+      .margin10 {
+         margin:10px;
+      }
+      #result-container {
+        width: 80%;
+        margin-top: 30px;
+        /*text-align: center;*/
+        /*border:1px solid black;*/
+        padding:10px;
+        margin-left: 10%;
+        background-color: rgba(238,238,238,0.8);
+      }
+      .ui .card {
+        width:20%;
+        margin-left: 10px;
+        margin-right: 40px;
+      }
+    </style>
+  </head>
+
+<body>
+
+    <div class="container" id="header-container">
+        <h1 class="link--kukuri"> Second Chance Pantry </h1>
+    </div>
+    <!-- /.container -->
+
+    <nav class="navbar  navbar-inverse" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <a class="navbar-brand" href="#"> Pantry</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#fakelink"> EatOut </a></li>
+        <li><a href="#fakelink"> My Pantry </a></li>
+        <li><a href="#fakelink"> Find Recipes</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" action="#" role="search">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+            <span class="input-group-btn">
+              <button type="submit" class="btn search-btn"><span class="fui-search"></span></button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </nav><!-- /navbar -->
+
+
+  <!-- SEARCH CONTAINER -->
+    <div class="container" id="search-container">
+          <input type="text" placeholder="Enter your location" class="form-control margin10" id="location-input" />
+          <input type="text" placeholder="Keyword" class="form-control margin10" id="keyword-input" />
+          <button class="btn btn-success" id="search-btn"> Search </button>
+    </div>
+
+  <!-- RESULT CONTAINER -->
+  <div class="container">
+        <div class="ui link cards ui four column grid"  id="result-container">
+        </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+    <script src="./js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./js/vendor/video.js"></script>
+    <script src="./js/flat-ui.min.js"></script>
+
+
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/javascript/OAuth.js"></script>
+    <script type="text/javascript" src="./assets/javascript/SHA1.js"></script>
+    <script type="text/javascript" src="./assets/javascript/yelp.js"></script>
+</body>
+
+</html>
