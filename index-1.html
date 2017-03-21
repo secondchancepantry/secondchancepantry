@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+		<link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./assets/css/style.css">
+	</head>
+	<body>
+
+	<p>Log in by clicking the button below</p>
+
+	<button onclick = "googleSignin()">Google Signin</button>
+	<button onclick = "googleSignout()">Google Signout</button>
+
+
+
+
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+	<!-- JQuery Link -->
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<!-- JQuery UI Link -->
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="crossorigin="anonymous"></script>
+	<!-- Link to my Javascript page.-->
+	<script src="./assets/javascript/app.js" type="text/javascript"></script>
+	<script>
+		var provider = new firebase.auth.GoogleAuthProvider();
+
+		function googleSignin() {
+		   firebase.auth()
+		   
+		   .signInWithPopup(provider).then(function(result) {
+			  var token = result.credential.accessToken;
+			  var user = result.user;
+				
+			  console.log(token)
+			  console.log("user information here:")
+			  console.log(user)
+		   }).catch(function(error) {
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+				
+			  console.log(error.code)
+			  console.log(error.message)
+		   });
+		}
+
+		function googleSignout() {
+		   firebase.auth().signOut()
+			
+		   .then(function() {
+			  console.log('Signout Succesfull')
+		   }, function(error) {
+			  console.log('Signout Failed')  
+		   });
+		}
+	</script> 
+	</body>
+</html>
