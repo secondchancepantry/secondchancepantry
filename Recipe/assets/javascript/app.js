@@ -18,7 +18,7 @@ $(function() {
   $newItemButton = $('#newItemButton');
 
   $('li').hide().each(function(index) {
-    $(this).delay(450 * index).fadeIn(1600);
+    $(this).delay(550 * index).fadeIn(1700);
   });
   // ITEM COUNTER
   function updateCount() {
@@ -136,7 +136,7 @@ var getRecipe = function(){
                                       <div class='recipe-name'> ${name}</div>
                                       <div class='sub-text'> Ready in: ${time} minutes </div>
                                       <br>
-                                      <div class='text'> Direction : ${steps} ... <a href="${more}"> Read More... </a></div>
+                                      <div class='text'> Directions : ${steps} ... <a href="${more}"> Read More... </a></div>
                                       <button id="GoogleCalendar-btn"> Add to Calendar </button>
                                   </div>
                                 </div>
