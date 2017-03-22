@@ -13,6 +13,7 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var userRef = firebase.database().ref('/users');
+var oauth_scope = "https://www.googleapis.com/auth/calendar"
 
 $('#submit-btn').on('click', function() {
     ingredients = $('#ingredient-input').val().trim();
@@ -29,31 +30,14 @@ $('#submit-btn').on('click', function() {
 })
 
 
-var provider = new firebase.auth.GoogleAuthProvider();
-
-function googleSignin() {
-   firebase.auth()
-   
-   .signInWithPopup(provider).then(function(result) {
-	  var token = result.credential.accessToken;
-	  user = result.user;
-   }).catch(function(error) {
-	  var errorCode = error.code;
-	  var errorMessage = error.message;
-		
-	  //console.log(error.code)
-	  //console.log(error.message)
-   });
-}
-
-function googleSignout() {
-   firebase.auth().signOut()
-	
-   .then(function() {
-	  console.log('Signout Succesfull')
-   }, function(error) {
-	  console.log('Signout Failed')  
-   });
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  user = profile;
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  console.log('Access Token: ' + JSON.stringify(profile));
 }
 
 
@@ -79,6 +63,9 @@ var getRecipe = function(){
     });
 };
 
+$('#update-calendar').on('click', function(){
+
+});
 
 $('#search-btn').on('click', function(){
 
