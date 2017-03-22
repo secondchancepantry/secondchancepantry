@@ -95,6 +95,7 @@
            </div>
            <div class="col-sm-8 height" id="selected-ingredients-container">
                 <button type="submit" class="btn btn-primary" id="search-btn">Search Recipes </button>
+                <br>
            </div>
         </div>
     </div>
@@ -102,9 +103,26 @@
 
 
     <!-- RESULT CONTAINER -->
-    <div class="container height" id="recipe-found"> Show Recipes here</div>
+    <div class="container" id="result-container">
+          <div class="ui labeled button" tabindex="0">
+            <div class="ui red button">
+              <i class="heart icon"></i> Like
+            </div>
+            <a class="ui basic red left pointing label">
+              1,048
+            </a>
+          </div>
+          <div class="ui labeled button" tabindex="0">
+            <div class="ui basic blue button">
+              <i class="fork icon"></i> Forks
+            </div>
+            <a class="ui basic left pointing blue label">
+              1,048
+            </a>
+          </div>
+    </div>
 
-
+    <br><br><br><br><br>
 
 
       <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
@@ -136,7 +154,12 @@
     <!-- JQuery UI Link -->
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="crossorigin="anonymous"></script>
         <!-- Firebase -->
+    <style type="text/css">
+      body {
+          background-image: url("./assets/img/bg.jpg");
+      }
 
+    </style>
 
     </body>
 </html>

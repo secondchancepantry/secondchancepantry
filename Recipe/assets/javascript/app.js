@@ -49,7 +49,7 @@ $(function() {
     var $this = $(this);
     var complete = $this.hasClass('complete');
     var selectedIngredient = $(this).text();
-    $('#selected-ingredients-container').append(`<p class='selectedIngredient'>${selectedIngredient}</p>`);
+    $('#selected-ingredients-container').append(`<p class='selectedIngredient'>${selectedIngredient}</p> <br>`);
     selectedIngredientList.push(selectedIngredient);
     console.log(selectedIngredientList);
 
@@ -76,15 +76,6 @@ $(function() {
 
 
 /*=====  End of TESTING  ======*/
-
-
-
-
-
-
-
-
-
 
 
 // $('#submit-btn').on('click', function() {
@@ -120,20 +111,44 @@ var getRecipe = function(){
             console.log(results);
 
             for (var i = 0; i < results.length; i++) {
-            var recipe = results[i].id;
-            console.log(recipe);
+                var recipe = results[i].id;
+                console.log(recipe);
 
-                $.ajax({
-                    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + recipe + '/information?includeNutrition=false', // The URL to the API. You can get this in the API page of the API you intend to consume
-                    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-                    data: {}, // Additional parameters here
-                    dataType: 'json',
-                    success: function(data) { console.log((data)); },
-                    error: function(err) { alert(err); },
-                    beforeSend: function(xhr) {
-                    xhr.setRequestHeader("X-Mashape-Authorization", "DrNwVlaI6BmshQBWAGcWVKEwd2Nop1lT1sHjsnhKbHXzD5wrkP"); // Enter here your Mashape key
-                    }
-                });
+                    $.ajax({
+                        url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + recipe + '/information?includeNutrition=false', // The URL to the API. You can get this in the API page of the API you intend to consume
+                        type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+                        data: {}, // Additional parameters here
+                        dataType: 'json',
+                        success: function(data) {
+                            var img = data.image;
+                            var name = data.title;
+                            var time = data.readyInMinutes;
+                            var steps = data.instructions.slice(0,400);
+                            var more = data.sourceUrl;
+
+                             console.log((data));
+                            $('#result-container').append(`
+                                <div class="recipes container">
+                                  <div class="col-sm-3">
+                                      <img src="${img}">
+                                  </div>
+                                  <div class="col-sm-9">
+                                      <div class='recipe-name'> ${name}</div>
+                                      <div class='sub-text'> Ready in: ${time} minutes </div>
+                                      <br>
+                                      <div class='text'> Direction : ${steps} ... <a href="${more}"> Read More... </a></div>
+                                      <button id="GoogleCalendar-btn"> Add to Calendar </button>
+                                  </div>
+                                </div>
+                            `);
+
+
+                        },
+                        error: function(err) { alert(err); },
+                        beforeSend: function(xhr) {
+                        xhr.setRequestHeader("X-Mashape-Authorization", "DrNwVlaI6BmshQBWAGcWVKEwd2Nop1lT1sHjsnhKbHXzD5wrkP"); // Enter here your Mashape key
+                        }
+                    });
 
             };
 
@@ -147,7 +162,7 @@ var getRecipe = function(){
 
 
 $('#search-btn').on('click', function(){
-
+    $('result-container').empty();
     getRecipe();
 
 });
