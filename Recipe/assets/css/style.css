@@ -12,9 +12,13 @@
     font-family:'Homemade Apple', cursive;
     padding-bottom: 20px;
   }
-  .navbar {
+  .nav-bar {
     margin-top:10px;
     width:100%;
+    height:40px;
+  }
+  .ui.menu {
+    margin:0;
   }
   .height {
       height: 400px;
