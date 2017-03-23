@@ -16,23 +16,40 @@
 
 <body>
 <div class="container"><br>
+<button id="authorize-button" style="display: none;float:right">Authorize</button>
+<button id="signout-button" style="display: none;float:right">Sign Out</button>
+<br><br><br>
 
+<pre id="content"></pre>
+<form role="form">
+	<div class="form-group">
+		<label for="ingr-name">Pantry Ingredient</label>
+		<input class="form-control" placeholder="Broccoli" id="ingr-name" type="text">
+	</div>
+	<div class="form-group">
+		<label for="expr-date">Expiration Date</label>
+		<input class="form-control" placeholder="2017-03-23" id="expr-date" type="text">
+	</div>
+	<button id="btn-submit" class="btn waves-effect waves-light" type="submit">Submit
+		<i class="material-icons right"></i>
+	</button>
+</form>
+</form>
 <!-- Banner -->
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
 <br>
-<button id="update-calendar" class="btn btn-info">Add an event to my calendar!</button>
+<!-- <button id="update-calendar" class="btn btn-info">Add an event to my calendar!</button> -->
+
+</div>
 
 <!-- Javascript file and additional libraries -->
-<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-<script 
-	src="https://code.jquery.com/jquery-3.1.1.min.js" 
-	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" 
-	crossorigin="anonymous"></script>
-<script src="https://apis.google.com/js/api.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
 <script type="text/javascript" src="assets/javascript/app.js"></script>
-
+<script async defer src="https://apis.google.com/js/api.js"></script>
 <!-- End Javascript libraries -->
-
 </body>
 </html>
