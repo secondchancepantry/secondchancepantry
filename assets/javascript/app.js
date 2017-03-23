@@ -29,9 +29,7 @@ var getRecipe = function(){
     });
 };
 
-
 $('#search-btn').on('click', function(){
-
     getRecipe();
 });
 

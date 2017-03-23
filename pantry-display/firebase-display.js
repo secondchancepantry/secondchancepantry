@@ -59,10 +59,25 @@ function ingredientsInDatabase(snapshot) {
       }
 };
 
-$(document).on("click", "button.delete", function(event) {
+function updateDatabase(snapshot){
+
+  // var data = snapshot;
+
+  // var ingredients = data.users.ingredients;
+
+  database.ref().update({
+
+    ingredients: ingredients
+        
+        
+  });
+};
+
+$(document).on("click", "button.delete",  function(snapshot) {
 
       event.preventDefault();
 
       $(this).remove();
+      // updateDatabase();
 });
     
