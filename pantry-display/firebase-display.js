@@ -10,16 +10,18 @@
   firebase.initializeApp(config);
 
   var database = firebase.database();
+  var userRef = firebase.database().ref('/users');
+  var IngredientList = [];
 
   database.ref().on("value", function(snapshot) {
     
   
   var data = snapshot.val();
-  var ingredients = data.users.ingredients;
+  IngredientList = data.users.ingredients;
 
 
-  ingredientsInDatabase(ingredients);
-  expire(ingredients);
+  ingredientsInDatabase(IngredientList);
+  expire(IngredientList);
   
 
 }, function (errorObject) {
@@ -50,34 +52,65 @@ function ingredientsInDatabase(snapshot) {
       if (!Array.isArray(insideList)) {
         insideList = [];
       }
-   
+      $("#ingredients-list").empty();
+      $("#expire-button").empty();
       for (var i = 0; i < insideList.length; i++) {
         var ingsButton = $("<button class='ingredient-button delete'>").text(insideList[i]).attr("data-index", i);
-        var expireButton = $( "<p>Date: <input type='text' id='date-picker'></p>");
+        var expireButton = $( "<p id="+ insideList[i] +">Date: <input type='text' id='date-picker'></p>");
         $("#ingredients-list").prepend(ingsButton);
         $("#expire-button").prepend(expireButton);
       }
+
 };
 
-function updateDatabase(snapshot){
 
-  // var data = snapshot;
+// database.ref().on("child_removed", function(snapshot) {
 
-  // var ingredients = data.users.ingredients;
+//   // var deletedPost = snapshot.val();
 
-  database.ref().update({
+//   console.log(snapshot);
 
-    ingredients: ingredients
+//   // var data = snapshot;
+
+//   // var ingredients = data.users.ingredients;
+
+//   // database.ref().update({
+
+//   //   ingredients: ingredients;
         
         
-  });
-};
+//   // });
+//   console.log("The blog post titled '" + deletedPost.title + "' has been deleted");
+// });
 
 $(document).on("click", "button.delete",  function(snapshot) {
 
+  debugger;
+      // get name of ingredient
+      var name = $(this).text();
+      // find index of name in IngredientList
+      var index = IngredientList.indexOf(name);
+      // console.log(index)
+      // console.log( IngredientList.indexOf(name));
+      // remove name from IngredientList
+      IngredientList.splice(index, 1);
+
       event.preventDefault();
 
+       userRef.update({
+
+        id: "user",
+        ingredients: IngredientList
+     
+
+
+      });
+
+     $("#" + name).remove();
+
       $(this).remove();
-      // updateDatabase();
+
+      
+      
 });
     
