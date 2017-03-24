@@ -1,3 +1,7 @@
+///////////////////////////////////////////////////////////////////////////////
+// VARIABLES
+///////////////////////////////////////////////////////////////////////////////
+
 var clientId = '277172047453-p51btc78lu7fatpjn3kkk75dula5kao3';
 var apiKey = 'AIzaSyBEfyrju1DaN8Tv-zALl1uBPhwNSJPycnw'
 var discoveryDocs = [
@@ -14,7 +18,6 @@ var user = {
 	last : "",
 	full : ""
 };
-
 var ingredients;
 var pantryList = [];
 var IngredientList = [];
@@ -276,7 +279,7 @@ function getCalendarId() {
 // CLICK FUNCTIONS
 ///////////////////////////////////////////////////////////////////////////////
 
-$("#btn-submit").on('click', function(event){
+$("#cal-btn-submit").on('click', function(event){
 	event.preventDefault();
 	var food = $('#ingr-name').val().trim();
 	var date = $('#expr-date').val().trim();
