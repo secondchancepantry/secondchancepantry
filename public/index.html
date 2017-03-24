@@ -5,7 +5,22 @@
 	<meta content="utf-8" http-equiv="encoding">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Second Chance Pantry</title>
-	<!-- Favicon -->
+
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+		<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- <!-- Favicon -->
 	<link rel="shortcut icon" href="./Flat-UI-master/img/favicon.ico">
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Calligraffitti|Clicker+Script|Covered+By+Your+Grace|Dancing+Script|Homemade+Apple|Inconsolata|Reenie+Beanie|Sacramento|Space+Mono|Yellowtail" rel="stylesheet">
@@ -22,23 +37,40 @@
 </head>
 
 <body>
-<button id="authorize-button" style="display: none;">Authorize</button>
-<button id="signout-button" style="display: none;">Sign Out</button>
 <!-- HEADER CONTAINER -->
-<div class="container" id="header-container">
+<!-- <div class="container" id="header-container">
+	<button id="authorize-button" style="display: none;">Authorize</button>
+	<button id="signout-button" style="display: none;">Sign Out</button>
 	<div id="header">Second Chance Pantry</div>
-</div>
+</div> -->
 
-<div class="ui inverted menu">
-	<a class="red item">PANTRY</a>
-	<a class='yellow item'>Find Recipes</a>
-	<a class="yellow item">My Pantry</a>
-	<a class="olive item">EatOut</a>
-	<a class="ui label orange item active" id="user-profile-pic">
-		<img id="login-image" class="ui right spaced avatar image" src="./assets/img/pic1.jpg">
-		<span id="login-name" style="">Elliot Parker</span>
-	</a>
-</div>
+<!-- <div class="ui inverted menu">
+			<div class="col-sm-1">
+					<a class="red item">PANTRY</a>
+					<a class='yellow item' >Find Recipes</a>
+					<a class="yellow item">My Pantry</a>
+					<a class="olive item">EatOut</a>
+			</div>
+			<div class="col-sm-11">
+				<div class="ui label orange item active" id="user-profile-pic">
+					<img id="login-image" class="ui right spaced avatar image" src="./assets/img/pic1.jpg">
+					<span id="login-name" style="">Elliot Parker</span>
+				</div>
+				
+			</div>
+</div> -->
+			<div class="container" id="header-container">
+					<div id="header"> 2nd Chance Pantry </div>
+			</div>i
+      <div class="container">
+          <div class="container" id="menu">
+              <h2 class="menu-item"> <a>HOME </a></h2>
+              <h2 class="menu-item"><a> MY PANTRY </a></h2>
+              <h2 class="menu-item"> <a>RECIPES</a></h2>
+              <h2 class="menu-item"><a> EATOUT </a></h2>
+              <h2 class="menu-item"><a> LOG-OUT </a></h2>
+          </div>
+      </div>
 
 <!-- ADD INGREDIENTS -->
 <div class="container height">
