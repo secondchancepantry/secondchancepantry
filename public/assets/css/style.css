@@ -64,7 +64,7 @@ body {
 }
 
 h1 {
-  background-image: url(../images/kinglogo.png);
+  /*background-image: url(../images/kinglogo.png);*/
   background-repeat: no-repeat;
   background-position: center center;
   text-align: center;
@@ -293,7 +293,7 @@ a.show{
   width: 130px;
   height: 60px;
   background-color: #403c3b;
-  background-image: url('./images/adverlion.png');
+  /*background-image: url('./images/adverlion.png');*/
   background-repeat: no-repeat;
   background-position: 10px center;
   color: #fff;
@@ -340,7 +340,7 @@ a.show{
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
   h1{
-    background-image: url(./images/2xkinglogo.png);
+    /*background-image: url(./images/2xkinglogo.png);*/
     background-size: 72px 72px;
   }
 selected-ingredients-container}

@@ -13,10 +13,12 @@ var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
 var calendarId = "";
 var user = {
+	obj : {},
 	photo : "",
 	first : "",
 	last : "",
-	full : ""
+	full : "",
+	email: ""
 };
 var ingredients;
 var pantryList = [];
@@ -24,6 +26,59 @@ var IngredientList = [];
 var selectedIngredientList = [];
 var database = firebase.database();
 var userRef = firebase.database().ref('/users');
+
+///////////////////////////////////////////////////////////////////////////////
+// GOOGLE SIGN-IN AND SIGN-OUT FUNCTIONS
+///////////////////////////////////////////////////////////////////////////////
+
+function handleClientLoad() {
+	gapi.load('client:auth2', initClient);
+}
+
+function initClient() {
+	gapi.client.init({
+		apiKey: apiKey,
+		discoveryDocs: discoveryDocs,
+		clientId: clientId,
+		scope: scopes
+	}).then(function () {
+		// Listen for sign-in state changes.
+		gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+		// Handle the initial sign-in state.
+		updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+		authorizeButton.onclick = handleAuthClick;
+		signoutButton.onclick = handleSignoutClick;
+	});
+	console.log("hi")
+}
+
+function updateSigninStatus(isSignedIn) {
+	if (isSignedIn) {
+		authorizeButton.style.display = 'none';
+		signoutButton.style.display = 'block';
+		getPeopleDetails();
+		getCalendarId();
+	} else {
+		authorizeButton.style.display = 'block';
+		signoutButton.style.display = 'none';
+	}
+}
+
+function handleAuthClick(event) {
+	gapi.auth2.getAuthInstance().signIn();
+}
+
+function handleSignoutClick(event) {
+	gapi.auth2.getAuthInstance().signOut();
+}
+
+function appendPre(message) {
+	var pre = document.getElementById('content');
+	var textContent = document.createTextNode(message + '\n');
+	pre.appendChild(textContent);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // PAGE SETUP
@@ -153,57 +208,6 @@ var getRecipe = function(){
 	});
 };
 
-///////////////////////////////////////////////////////////////////////////////
-// GOOGLE SIGN-IN AND SIGN-OUT FUNCTIONS
-///////////////////////////////////////////////////////////////////////////////
-
-function handleClientLoad() {
-	gapi.load('client:auth2', initClient);
-}
-
-function initClient() {
-	gapi.client.init({
-		apiKey: apiKey,
-		discoveryDocs: discoveryDocs,
-		clientId: clientId,
-		scope: scopes
-	}).then(function () {
-		// Listen for sign-in state changes.
-		gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-		// Handle the initial sign-in state.
-		updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-		authorizeButton.onclick = handleAuthClick;
-		signoutButton.onclick = handleSignoutClick;
-	});
-}
-
-function updateSigninStatus(isSignedIn) {
-	if (isSignedIn) {
-		authorizeButton.style.display = 'none';
-		signoutButton.style.display = 'block';
-		getPeopleDetails();
-		getCalendarId();
-	} else {
-		authorizeButton.style.display = 'block';
-		signoutButton.style.display = 'none';
-	}
-}
-
-function handleAuthClick(event) {
-	gapi.auth2.getAuthInstance().signIn();
-}
-
-function handleSignoutClick(event) {
-	gapi.auth2.getAuthInstance().signOut();
-}
-
-function appendPre(message) {
-	var pre = document.getElementById('content');
-	var textContent = document.createTextNode(message + '\n');
-	pre.appendChild(textContent);
-}
-
 
 ///////////////////////////////////////////////////////////////////////////////
 // GOOGLE IDENTITY FUNCTIONS
@@ -219,10 +223,12 @@ function getPeopleDetails() {
 		resourceName: 'people/me'
 	}).then(function(response) {
 		getCalendarId()
+		user.obj = response.result;
 		user.photo = response.result.photos[0].url;
 		user.first = response.result.names[0].givenName;
 		user.last = response.result.names[0].familyName;
 		user.full = response.result.names[0].displayName;
+		user.email = response.result.emailAddresses[0].value;
 		drawPeople();
 	}, function(reason) {
 		console.log('Error: ' + reason.result.error.message);
